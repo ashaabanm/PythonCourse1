@@ -1,0 +1,5 @@
+to schedule runnig this script you could use crontab on linux:
+1- open terminal and write [ crontab -e ] and choose option ( 1 )
+2- press enter and add  this line : 
+	* * * * * /path_to_script/task2.sh
+3- press ctrl+s to save and ctrl+x to exit
