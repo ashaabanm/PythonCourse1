@@ -6,9 +6,11 @@ from subprocess import PIPE, Popen
 import json
 import pandas as pd
 from pandas.io.json import json_normalize
+from urllib.parse import urlparse
 import argparse
 
 start_time = time.time()
+
 
 def getChecksumsAndDuplicates(dirPath="."):
     checksums = {}
@@ -47,12 +49,11 @@ def splitOS(word):
 
 def cleanUrl(url):
     if (type(url) == str):
-        start = url.find("://")
-        end = url.find(".com")
-        if (start == -1 or end == -1):
+        newUrl = urlparse(url).netloc
+        if(newUrl == ''):
             return url
         else:
-            return url[start + 3:end + 4]
+            return newUrl
     else:
         return url
 
