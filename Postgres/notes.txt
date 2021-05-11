@@ -1,0 +1,22 @@
+- change password to run sudo command on postgres
+1)sudo passwd postgres
+2)sudo usermod -aG sudo postgres
+3)sudo su postgres
+4)sudo apt-get install postgresql-contrib postgresql-plpython3
+
+- to write python in postgres
+CREATE LANGUAGE plpythonu;
+
+- to install python package in postgres
+CREATE OR REPLACE FUNCTION public.install_package()
+    RETURNS text
+    LANGUAGE 'plpython3u'
+AS $BODY$
+ import subprocess
+ import sys
+ 
+ bashCommand = "pip3 install pandas"
+ process = subprocess.Popen(bashCommand.split(), stdout=subprocess.PIPE)
+ output, error = process.communicate()
+ return "done"
+$BODY$;
