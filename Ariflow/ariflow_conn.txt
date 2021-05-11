@@ -1,0 +1,29 @@
+Conn Id : hive_conn	
+Conn Type : Hive Client Wrapper
+Host : localhost
+Port : 10000
+
+-----------------------------------
+
+Conn Id : forex_api	
+Conn Type : HTTP
+Host : https://gist.githubusercontent.com/
+
+-----------------------------------
+
+Conn Id : forex_path	
+Conn Type : File (path)
+Extra : {"path":"/opt/airflow/dags/files"}
+
+-----------------------------------
+
+Conn Id : spark_conn	
+Conn Type : Spark
+Host : local
+Extra : {"queue": "root.default"}
+
+----------------------------------
+Slack
+
+pip install apache-airflow[slack]
+
